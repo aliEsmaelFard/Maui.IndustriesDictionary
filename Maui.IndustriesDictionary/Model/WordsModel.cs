@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Maui.Dictionary.Model
 {
-    [Table("words")]
+    [Table("word")]
     public class WordsModel
     {
         [AutoIncrement, PrimaryKey]
