@@ -1,41 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Maui.IndustriesDictionary.MainPage">
+             x:Class="Maui.IndustriesDictionary.MainPage"   
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#449DE3F6"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             
+             >
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <!--necessary Code  for any page and Dont forget  xmlns:mct  line in top of page-->
+    <!--change status bar color #29A0B1 -->
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#189AB4"  />
+    </ContentPage.Behaviors>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+    <Grid RowDefinitions="80,*" >
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+        <Border 
+            HeightRequest="50"
+            BackgroundColor="White" 
+            Margin="10,10"
+            StrokeShape="RoundRectangle 8"
+            >
+            <Border.Shadow >
+                <Shadow Brush="#000000"
+                                Offset="0 , 4"
+                                Opacity=".25"
+                                Radius="4"/>
+            </Border.Shadow>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <HorizontalStackLayout>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                <Entry Placeholder="Search Some Thing"/>
+            </HorizontalStackLayout>
+        </Border>
+    </Grid>
 
-        </VerticalStackLayout>
-    </ScrollView>
 
 </ContentPage>
