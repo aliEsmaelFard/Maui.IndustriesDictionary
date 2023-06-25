@@ -53,6 +53,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\English.svg" />
+	  <None Remove="Resources\Images\germany.svg" />
+	  <None Remove="Resources\Images\iran.png" />
+	  <None Remove="Resources\Images\iran.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />

@@ -34,6 +34,30 @@
                 <Entry Placeholder="Search Some Thing"/>
             </HorizontalStackLayout>
         </Border>
+
+        <Grid Grid.Row="1">
+            <Border  BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="120" HeightRequest="150" StrokeShape="RoundRectangle 8" Margin="10,-2">
+
+                <VerticalStackLayout Margin="10" Spacing="5">
+                    <HorizontalStackLayout Spacing="10">
+                    <ImageButton Source="english.svg" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="English"/>
+                    </HorizontalStackLayout>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                    <ImageButton Source="germany.svg" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="Dutch"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                    <ImageButton Source="iran.png" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="فارسی"/>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+            </Border>
+            
+        </Grid>
     </Grid>
 
 
