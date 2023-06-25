@@ -29,34 +29,59 @@
                                 Radius="4"/>
             </Border.Shadow>
 
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="10,0" Spacing="15">
 
-                <Entry Placeholder="Search Some Thing"/>
+                <HorizontalStackLayout >
+
+                    <ImageButton x:Name="SelectedItem"  WidthRequest="34" HeightRequest="34" Clicked="ImageButton_Clicked"/>
+
+                    <ImageButton x:Name="Arrow" Source="{FontImage Color=Gray, Size=30, Glyph='⌄'}"
+                                Clicked="ImageButton_Clicked"   WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,5"/>
+
+                    <Line   BackgroundColor="#189AB4" Margin="0,5" />
+
+                </HorizontalStackLayout>
+          
+
+                <Entry Placeholder="Search Some Thing" PlaceholderColor="Gray"  FontSize="Medium"/>
             </HorizontalStackLayout>
         </Border>
 
         <Grid Grid.Row="1">
-            <Border  BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="120" HeightRequest="150" StrokeShape="RoundRectangle 8" Margin="10,-2">
+            
+            <!--Drop Down-->
+            <Border IsVisible="false" x:Name="DropDown"  BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="120" HeightRequest="130" StrokeShape="RoundRectangle 8" Margin="10,-20">
 
                 <VerticalStackLayout Margin="10" Spacing="5">
                     <HorizontalStackLayout Spacing="10">
-                    <ImageButton Source="english.svg" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="English"/>
+                        <Image Source="english.svg" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="English" VerticalOptions="Center"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FirstItem_Tapped"/>
+                        </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
                     
                     <HorizontalStackLayout Spacing="10">
-                    <ImageButton Source="germany.svg" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="Dutch"/>
+                        <Image Source="germany.svg" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="Dutch" VerticalOptions="Center"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SecondItem_Tapped"/>
+                        </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">
-                    <ImageButton Source="iran.png" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="فارسی"/>
+                    <Image Source="iran2.png" WidthRequest="34" HeightRequest="34"/>
+                        <Label Text="فارسی" VerticalOptions="Center"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ThirdItem_Tapped"/>
+                        </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
                     
                 </VerticalStackLayout>
             </Border>
-            
+            <!--End Drop Down-->
+
+
         </Grid>
     </Grid>
 

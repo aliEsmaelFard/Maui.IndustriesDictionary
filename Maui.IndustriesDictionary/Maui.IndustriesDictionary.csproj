@@ -57,6 +57,7 @@
 	  <None Remove="Resources\Images\germany.svg" />
 	  <None Remove="Resources\Images\iran.png" />
 	  <None Remove="Resources\Images\iran.svg" />
+	  <None Remove="Resources\Images\iran2.png" />
 	</ItemGroup>
 
 	<ItemGroup>
