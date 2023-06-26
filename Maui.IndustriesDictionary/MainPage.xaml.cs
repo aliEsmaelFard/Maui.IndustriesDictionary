@@ -1,9 +1,13 @@
-﻿namespace Maui.IndustriesDictionary;
+﻿using Maui.Dictionary.Repository;
+using Microsoft.Maui.Controls.Compatibility;
+using System.Reflection;
+
+namespace Maui.IndustriesDictionary;
 
 public partial class MainPage : ContentPage
 {
 
-    string selctedLang = "en";
+    string selctedLang = "English";
     string _imageSource ;
     string imageSource
     {
@@ -59,14 +63,14 @@ public partial class MainPage : ContentPage
     private async void FirstItem_Tapped(object sender, TappedEventArgs e)
     {
         imageSource = "english.svg";
-        selctedLang = "en";
+        selctedLang = "English";
         await CloseDropDown();
     }
 
     private async void SecondItem_Tapped(object sender, TappedEventArgs e)
     {
         imageSource = "germany.svg";
-        selctedLang = "gr";
+        selctedLang = "Deutsch";
         await CloseDropDown();
 
     }
@@ -74,9 +78,48 @@ public partial class MainPage : ContentPage
     private async void ThirdItem_Tapped(object sender, TappedEventArgs e)
     {
         imageSource = "iran2.png";
-        selctedLang = "fa";
+        selctedLang = "Persian";
         await CloseDropDown();
 
+    }
+
+    private void FillDataBase()
+    {
+        try
+        {
+            //// TODO Only do this when app first runs
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
+            using (Stream stream = assembly.GetManifestResourceStream("Maui.IndustriesDictionary.data.sqlite"))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    stream.CopyTo(memoryStream);
+
+                    File.WriteAllBytes(MyRepository.DbPath, memoryStream.ToArray());
+                }
+            }
+
+        }
+        catch (Exception ex) { string msg = ex.Message; }
+    }
+
+    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string search = SearchText.Text;
+
+        if (!String.IsNullOrEmpty(search) && search.Length > 2)
+        {
+            MyRepository repository = new MyRepository();
+
+            words = repository.GetList(search);
+            BindingContext = words;
+
+        }
+        else if (String.IsNullOrEmpty(search))
+        {
+            words = null;
+            BindingContext = words;
+        }
     }
 }
 

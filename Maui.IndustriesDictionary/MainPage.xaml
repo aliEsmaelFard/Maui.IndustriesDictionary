@@ -43,7 +43,7 @@
                 </HorizontalStackLayout>
           
 
-                <Entry Placeholder="Search Some Thing" PlaceholderColor="Gray"  FontSize="Medium"/>
+                <Entry x:Name="SearchText" Placeholder="Search Some Thing" PlaceholderColor="Gray"  FontSize="Medium" TextChanged="Entry_TextChanged"/>
             </HorizontalStackLayout>
         </Border>
 
