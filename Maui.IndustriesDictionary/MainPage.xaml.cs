@@ -1,7 +1,9 @@
-﻿using Maui.Dictionary.Model;
+﻿using CommunityToolkit.Maui.Core.Extensions;
+using Maui.Dictionary.Model;
 using Maui.Dictionary.Repository;
 using Maui.IndustriesDictionary.Util;
 using Microsoft.Maui.Controls.Compatibility;
+using System.Collections.ObjectModel;
 using System.Reflection;
 
 namespace Maui.IndustriesDictionary;
@@ -11,7 +13,7 @@ public partial class MainPage : ContentPage
 
     string selctedLang = "English";
     string _imageSource;
-    List<WordsModel> words = new List<WordsModel>();
+    ObservableCollection<WordsModel> words = new ObservableCollection<WordsModel>();
     string imageSource
     {
         get
@@ -30,16 +32,18 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
-        if (Settings.FirstRun)
-        {
-            // Perform an action.
-            FillDataBase();
-            Settings.FirstRun = false;
-        }
+      
     }
 
     protected override void OnAppearing()
     {
+        if (Utils.FirstRun)
+        {
+            // Perform an action.
+            FillDataBase();
+            Utils.FirstRun = false;
+        }
+
         imageSource = "english.svg";
         base.OnAppearing();
     }
@@ -55,8 +59,6 @@ public partial class MainPage : ContentPage
             DropDown.IsVisible = true;
             //     await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);  
             await DropDown.TranslateTo(0, 10, 200, Easing.Linear);
-
-
         }
 
 
@@ -117,17 +119,22 @@ public partial class MainPage : ContentPage
 
         if (!String.IsNullOrEmpty(search) && search.Length > 2)
         {
-            MyRepository repository = new MyRepository();
-
-            //   words = repository.GetList(search);
-            BindingContext = words;
-
+            //Connet to db
+            LoadData(search);
         }
         else if (String.IsNullOrEmpty(search))
         {
             words = null;
             BindingContext = words;
         }
+    }
+
+    private  void LoadData(string search)
+    {
+        MyRepository repository = new MyRepository();
+
+        words =  repository.GetList(search, selctedLang).ToObservableCollection();
+        Utils.SetDataToCollectionView(CollectionMainWords, "", words,this);
     }
 }
 

@@ -53,6 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="data.sqlite" />
 	  <None Remove="Resources\Images\drop_down.png" />
 	  <None Remove="Resources\Images\English.svg" />
 	  <None Remove="Resources\Images\germany.svg" />
@@ -62,6 +63,10 @@
 	  <None Remove="Resources\Images\iran2.png" />
 	  <None Remove="Resources\Images\iran_card.png" />
 	  <None Remove="Resources\Images\united_card.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="data.sqlite" />
 	</ItemGroup>
 
 	<ItemGroup>
