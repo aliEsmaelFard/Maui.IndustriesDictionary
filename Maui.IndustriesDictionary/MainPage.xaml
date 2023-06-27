@@ -1,82 +1,214 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Maui.IndustriesDictionary.MainPage"   
+             x:Class="Maui.IndustriesDictionary.MainPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="#449DE3F6"
-             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             
-             >
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
 
     <!--necessary Code  for any page and Dont forget  xmlns:mct  line in top of page-->
     <!--change status bar color #29A0B1 -->
     <ContentPage.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="#189AB4"  />
+        <mct:StatusBarBehavior StatusBarColor="#189AB4" />
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="80,*" >
+    <Grid RowDefinitions="80,*">
 
-        <Border 
-            HeightRequest="50"
-            BackgroundColor="White" 
-            Margin="10,10"
-            StrokeShape="RoundRectangle 8"
-            >
-            <Border.Shadow >
+        <Border HeightRequest="50"
+                BackgroundColor="White"
+                Margin="10,10"
+                StrokeShape="RoundRectangle 8">
+            <Border.Shadow>
                 <Shadow Brush="#000000"
-                                Offset="0 , 4"
-                                Opacity=".25"
-                                Radius="4"/>
+                        Offset="0 , 4"
+                        Opacity=".25"
+                        Radius="4" />
             </Border.Shadow>
 
-            <HorizontalStackLayout Margin="10,0" Spacing="15">
+            <HorizontalStackLayout Margin="10,0"
+                                   Spacing="15"
+                                   FlowDirection="RightToLeft">
 
-                <HorizontalStackLayout >
+                <HorizontalStackLayout>
 
-                    <ImageButton x:Name="SelectedItem"  WidthRequest="34" HeightRequest="34" Clicked="ImageButton_Clicked"/>
+                    <ImageButton x:Name="SelectedItem"
+                                 WidthRequest="34"
+                                 HeightRequest="34"
+                                 Clicked="ImageButton_Clicked" />
 
-                    <ImageButton x:Name="Arrow" Source="{FontImage Color=Gray, Size=30, Glyph='⌄'}"
-                                Clicked="ImageButton_Clicked"   WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,5"/>
+                    <ImageButton x:Name="Arrow"
+                                 Source="drop_down.png"
+                                 Clicked="ImageButton_Clicked"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center" />
 
-                    <Line   BackgroundColor="#189AB4" Margin="0,5" />
+                    <Line   BackgroundColor="#189AB4"
+                            Margin="0,5" />
 
                 </HorizontalStackLayout>
-          
 
-                <Entry x:Name="SearchText" Placeholder="Search Some Thing" PlaceholderColor="Gray"  FontSize="Medium" TextChanged="Entry_TextChanged"/>
+
+                <Entry x:Name="SearchText"
+                       Placeholder="جستجوی کلمه"
+                       PlaceholderColor="Gray"
+                       FontSize="Medium"
+                       TextChanged="Entry_TextChanged" />
             </HorizontalStackLayout>
         </Border>
 
-        <Grid Grid.Row="1">
-            
+        <Grid Grid.Row="1"
+              RowDefinitions="Auto">
+
+            <ActivityIndicator Grid.Column="0"
+                               Grid.ColumnSpan="3"
+                               Grid.Row="0"
+                               Grid.RowSpan="3"
+                               Color="#189AB4"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               x:Name="LoadingBar"
+                               IsRunning="True" />
+
+
+            <ScrollView Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="3">
+
+                <CollectionView x:Name="CollectionMainTaskList"
+                                Margin="0,20,0,150"
+                                SelectionMode="Single"
+                                ItemsSource="{Binding  }">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border Margin="20"
+                                    BackgroundColor="White"
+                                    StrokeShape="RoundRectangle 8">
+                                <Border.Shadow>
+                                    <Shadow Brush="#000000"
+                                            Offset="0 , 4"
+                                            Opacity=".25"
+                                            Radius="4" />
+                                </Border.Shadow>
+
+
+
+                                <Grid   RowDefinitions="Auto, Auto, Auto"
+                                        ColumnDefinitions="50, *, 50"
+                                        Padding="15"
+                                        RowSpacing="20">
+                                    <Image Source="united_card.png"
+                                           WidthRequest="24"
+                                           HeightRequest="24"
+                                           Grid.Column="0" />
+                                    <Label Text="Axle journal turning and roller burnishing lathesr burnishing lathes"
+                                           FontSize="Small"
+                                           TextColor="Black"
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2" />
+
+                                    <Image Source="germany_card.png"
+                                           WidthRequest="24"
+                                           HeightRequest="24"
+                                           Grid.Column="0"
+                                           Grid.Row="1" />
+                                    <Label Text="Additive und Füllstoffe für Verbereitung vonKautsc hukmi schungen"
+                                           FontSize="Small"
+                                           TextColor="Black"
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           Grid.Row="1" />
+
+                                    <Image Source="iran_card.png"
+                                           WidthRequest="24"
+                                           HeightRequest="24"
+                                           Grid.Column="2"
+                                           Grid.Row="2" />
+                                    <Label Text="واد افزودنی و پُر کننده برای
+پردازش مخلوط یالستیکی"
+                                           FontSize="Small"
+                                           TextColor="Black"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Grid.Row="2"
+                                           FlowDirection="RightToLeft" />
+                                </Grid>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal"></VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor"
+                                                        Value="white"></Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </ScrollView>
+
             <!--Drop Down-->
-            <Border IsVisible="false" x:Name="DropDown"  BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="120" HeightRequest="130" StrokeShape="RoundRectangle 8" Margin="10,-20">
+            <Border IsVisible="false"
+                    x:Name="DropDown"
+                    BackgroundColor="White"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    WidthRequest="120"
+                    HeightRequest="130"
+                    StrokeShape="RoundRectangle 8"
+                    Margin="10,-20">
 
-                <VerticalStackLayout Margin="10" Spacing="5">
+                <VerticalStackLayout Margin="10"
+                                     Spacing="5">
                     <HorizontalStackLayout Spacing="10">
-                        <Image Source="english.svg" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="English" VerticalOptions="Center"/>
+                        <Image Source="english.svg"
+                               WidthRequest="34"
+                               HeightRequest="34" />
+                        <Label Text="English"
+                               VerticalOptions="Center" />
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FirstItem_Tapped"/>
-                        </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
-                    
-                    <HorizontalStackLayout Spacing="10">
-                        <Image Source="germany.svg" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="Dutch" VerticalOptions="Center"/>
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SecondItem_Tapped"/>
+                            <TapGestureRecognizer Tapped="FirstItem_Tapped" />
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="10">
-                    <Image Source="iran2.png" WidthRequest="34" HeightRequest="34"/>
-                        <Label Text="فارسی" VerticalOptions="Center"/>
+                        <Image Source="germany.svg"
+                               WidthRequest="34"
+                               HeightRequest="34" />
+                        <Label Text="Dutch"
+                               VerticalOptions="Center" />
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ThirdItem_Tapped"/>
+                            <TapGestureRecognizer Tapped="SecondItem_Tapped" />
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
-                    
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="iran2.png"
+                               WidthRequest="34"
+                               HeightRequest="34" />
+                        <Label Text="فارسی"
+                               VerticalOptions="Center" />
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ThirdItem_Tapped" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
                 </VerticalStackLayout>
             </Border>
             <!--End Drop Down-->

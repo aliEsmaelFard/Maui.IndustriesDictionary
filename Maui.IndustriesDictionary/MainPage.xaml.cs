@@ -1,4 +1,6 @@
-﻿using Maui.Dictionary.Repository;
+﻿using Maui.Dictionary.Model;
+using Maui.Dictionary.Repository;
+using Maui.IndustriesDictionary.Util;
 using Microsoft.Maui.Controls.Compatibility;
 using System.Reflection;
 
@@ -8,7 +10,8 @@ public partial class MainPage : ContentPage
 {
 
     string selctedLang = "English";
-    string _imageSource ;
+    string _imageSource;
+    List<WordsModel> words = new List<WordsModel>();
     string imageSource
     {
         get
@@ -21,13 +24,18 @@ public partial class MainPage : ContentPage
             SelectedItem.Source = value;
 
         }
-    } 
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-        
+    public MainPage()
+    {
+        InitializeComponent();
 
+        if (Settings.FirstRun)
+        {
+            // Perform an action.
+            FillDataBase();
+            Settings.FirstRun = false;
+        }
     }
 
     protected override void OnAppearing()
@@ -35,18 +43,18 @@ public partial class MainPage : ContentPage
         imageSource = "english.svg";
         base.OnAppearing();
     }
-    private async void  ImageButton_Clicked(object sender, EventArgs e)
+    private async void ImageButton_Clicked(object sender, EventArgs e)
     {
-        if (DropDown.IsVisible )
+        if (DropDown.IsVisible)
         {
             //await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);
             await CloseDropDown();
         }
         else
         {
-            DropDown.IsVisible =true;
-       //     await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);  
-            await DropDown.TranslateTo(0, 10 , 200, Easing.Linear);
+            DropDown.IsVisible = true;
+            //     await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);  
+            await DropDown.TranslateTo(0, 10, 200, Easing.Linear);
 
 
         }
@@ -111,7 +119,7 @@ public partial class MainPage : ContentPage
         {
             MyRepository repository = new MyRepository();
 
-            words = repository.GetList(search);
+            //   words = repository.GetList(search);
             BindingContext = words;
 
         }
