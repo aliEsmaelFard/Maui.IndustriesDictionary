@@ -119,55 +119,7 @@
 
             </ScrollView>
 
-            <!--Drop Down-->
-            <Border IsVisible="false"
-                    x:Name="DropDown"
-                    BackgroundColor="White"
-                    HorizontalOptions="End"
-                    VerticalOptions="Start"
-                    WidthRequest="120"
-                    HeightRequest="130"
-                    StrokeShape="RoundRectangle 8"
-                    Margin="0,55,20,0">
-
-                <VerticalStackLayout Margin="10"
-                                     Spacing="5">
-                    <HorizontalStackLayout Spacing="10">
-                        <Image Source="english.svg"
-                               WidthRequest="34"
-                               HeightRequest="34" />
-                        <Label Text="English"
-                               VerticalOptions="Center" />
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FirstItem_Tapped" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Image Source="germany.svg"
-                               WidthRequest="34"
-                               HeightRequest="34" />
-                        <Label Text="Dutch"
-                               VerticalOptions="Center" />
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SecondItem_Tapped" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout Spacing="10">
-                        <Image Source="iran2.png"
-                               WidthRequest="34"
-                               HeightRequest="34" />
-                        <Label Text="فارسی"
-                               VerticalOptions="Center" />
-                        <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ThirdItem_Tapped" />
-                        </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
-
-                </VerticalStackLayout>
-            </Border>
-            <!--End Drop Down-->
+       
 
 
         </Grid>
@@ -199,10 +151,11 @@
                                  Clicked="ImageButton_Clicked" />
 
                     <ImageButton x:Name="Arrow"
-                                 Source="drop_down.png"
+                                 Source="arrow.png"
                                  Clicked="ImageButton_Clicked"
-                                 WidthRequest="30"
-                                 HeightRequest="30"
+                                 WidthRequest="16"
+                                 Margin="5,6,5,0"
+                                 HeightRequest="16"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center" />
 
@@ -217,7 +170,17 @@
                        VerticalOptions="Center"
                        PlaceholderColor="Gray"
                        FontSize="Medium"
+                       BackgroundColor="red"
                        TextChanged="Entry_TextChanged" />
+
+                <ImageButton x:Name="search_img"
+                             Source="search.png"
+                             WidthRequest="20"
+                             HeightRequest="20"
+                             VerticalOptions="Center"
+                             Margin="100,0,00,0"
+                             HorizontalOptions="End" />
+                
             </HorizontalStackLayout>
         </Border>
 
@@ -281,6 +244,56 @@
             </HorizontalStackLayout>
         </Grid>
 
+
+        <!--Drop Down-->
+        <Border IsVisible="false"
+                x:Name="DropDown"
+                BackgroundColor="White"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                WidthRequest="120"
+                HeightRequest="130"
+                StrokeShape="RoundRectangle 8"
+                Margin="0,55,20,0">
+
+            <VerticalStackLayout Margin="10"
+                                 Spacing="5">
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="english.svg"
+                           WidthRequest="34"
+                           HeightRequest="34" />
+                    <Label Text="English"
+                           VerticalOptions="Center" />
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FirstItem_Tapped" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="germany.svg"
+                           WidthRequest="34"
+                           HeightRequest="34" />
+                    <Label Text="Dutch"
+                           VerticalOptions="Center" />
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SecondItem_Tapped" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="iran2.png"
+                           WidthRequest="34"
+                           HeightRequest="34" />
+                    <Label Text="فارسی"
+                           VerticalOptions="Center" />
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ThirdItem_Tapped" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
+        <!--End Drop Down-->
     </Grid>
 
 

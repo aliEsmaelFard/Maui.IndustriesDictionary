@@ -116,25 +116,38 @@ public partial class MainPage : ContentPage
 
     private void Entry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        string search = SearchText.Text;
-
-        if (!String.IsNullOrEmpty(search) && search.Length > 2)
-        {
-            //Connet to db
-            LoadData(search);
-        }
-        else if (String.IsNullOrEmpty(search))
-        {
-            words = null;
-            BindingContext = words;
-        }
+        CheckEntery();
     }
 
+    private void CheckEntery()
+    {
+        try
+        {
+            string search = SearchText.Text;
+            search_img.IsVisible = (String.IsNullOrEmpty(search)) ? true : false;
+
+            if (!String.IsNullOrEmpty(search) && search.Length > 2)
+            {
+                //Connet to db
+                LoadData(search);
+            }
+            else if (String.IsNullOrEmpty(search))
+            {
+                words = null;
+                BindingContext = words;
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
     private  void LoadData(string search)
     {
         MyRepository repository = new MyRepository();
 
-        words =  repository.GetList(search, selctedLang).ToObservableCollection();
+        words =  repository.GetList(search, selctedLang, advanceSearch).ToObservableCollection();
         Utils.SetDataToCollectionView(CollectionMainWords, "", words,this);
     }
 
@@ -147,8 +160,11 @@ public partial class MainPage : ContentPage
         contains_label.TextColor = Colors.Gray;
 
         advanceSearch = "Start";
-    }    
-    
+        //search
+        CheckEntery();
+
+    }
+
     private void Contains_Tapped(object sender, TappedEventArgs e)
     {
         start_with_lay.BackgroundColor = Colors.White;
@@ -159,6 +175,8 @@ public partial class MainPage : ContentPage
 
         advanceSearch = "Contains";
 
+        //search
+        CheckEntery();
     }
 }
 

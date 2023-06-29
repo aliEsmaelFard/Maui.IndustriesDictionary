@@ -22,7 +22,7 @@ namespace Maui.IndustriesDictionary.Util
                  if (observer.Count == 0)
                  {
                     page.BindingContext = observer;
-                    collectionView.EmptyView = "مورد مشابه‌ای یافت تشد.";
+                    collectionView.EmptyView = "مورد مشابه‌ای یافت نشد.";
                  }
                 //otherwise we bind data to collectionView (everything is right)
                 else
