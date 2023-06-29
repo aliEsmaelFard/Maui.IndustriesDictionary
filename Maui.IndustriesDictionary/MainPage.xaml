@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.IndustriesDictionary.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#449DE3F6"
+             BackgroundColor="#1F91C2"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
 
     <!--necessary Code  for any page and Dont forget  xmlns:mct  line in top of page-->
@@ -12,54 +12,11 @@
         <mct:StatusBarBehavior StatusBarColor="#189AB4" />
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="80,*">
-
-        <Border HeightRequest="50"
-                BackgroundColor="White"
-                Margin="10,10"
-                StrokeShape="RoundRectangle 8">
-            <Border.Shadow>
-                <Shadow Brush="#000000"
-                        Offset="0 , 4"
-                        Opacity=".25"
-                        Radius="4" />
-            </Border.Shadow>
-
-            <HorizontalStackLayout Margin="10,0"
-                                   Spacing="15"
-                                   FlowDirection="RightToLeft">
-
-                <HorizontalStackLayout>
-
-                    <ImageButton x:Name="SelectedItem"
-                                 WidthRequest="34"
-                                 HeightRequest="34"
-                                 Clicked="ImageButton_Clicked" />
-
-                    <ImageButton x:Name="Arrow"
-                                 Source="drop_down.png"
-                                 Clicked="ImageButton_Clicked"
-                                 WidthRequest="30"
-                                 HeightRequest="30"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center" />
-
-                    <Line   BackgroundColor="#189AB4"
-                            Margin="0,5" />
-
-                </HorizontalStackLayout>
+    <Grid RowDefinitions="*">
 
 
-                <Entry x:Name="SearchText"
-                       Placeholder="جستجوی کلمه"
-                       PlaceholderColor="Gray"
-                       FontSize="Medium"
-                       TextChanged="Entry_TextChanged" />
-            </HorizontalStackLayout>
-        </Border>
 
-        <Grid Grid.Row="1"
-              >
+        <Grid>
 
             <ActivityIndicator Grid.Column="0"
                                Grid.ColumnSpan="3"
@@ -69,7 +26,8 @@
                                WidthRequest="50"
                                HeightRequest="50"
                                x:Name="LoadingBar"
-                               IsRunning="True" />
+                               IsRunning="True"
+                               IsVisible="false" />
 
 
             <ScrollView Grid.Row="0"
@@ -78,19 +36,19 @@
                         Grid.RowSpan="3">
 
                 <CollectionView x:Name="CollectionMainWords"
-                                Margin="0,20,0,150"
+                                Margin="0,110,0,150"
                                 SelectionMode="Single"
                                 ItemsSource="{Binding  }">
 
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
-                                           ItemSpacing="12" />
+                                           ItemSpacing="16" />
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Border Margin="20"
+                            <Border Margin="20,0"
                                     BackgroundColor="White"
                                     StrokeShape="RoundRectangle 8">
                                 <Border.Shadow>
@@ -106,7 +64,7 @@
                                         ColumnDefinitions="50, *, 50"
                                         Padding="15"
                                         RowSpacing="20">
-                                    
+
                                     <Image Source="united_card.png"
                                            WidthRequest="24"
                                            HeightRequest="24"
@@ -172,7 +130,7 @@
                     WidthRequest="120"
                     HeightRequest="130"
                     StrokeShape="RoundRectangle 8"
-                    Margin="10,-20">
+                    Margin="0,55,20,0">
 
                 <VerticalStackLayout Margin="10"
                                      Spacing="5">
@@ -215,7 +173,105 @@
 
 
         </Grid>
+
+        <!--toolbar-->
+        <Border HeightRequest="50"
+                BackgroundColor="White"
+                Margin="20,10,20,0"
+                VerticalOptions="Start"
+                StrokeShape="RoundRectangle 8">
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Offset="0 , 4"
+                        Opacity=".25"
+                        Radius="4" />
+            </Border.Shadow>
+
+            <HorizontalStackLayout Margin="10,0"
+                                   Spacing="15"
+                                   FlowDirection="RightToLeft">
+
+                <HorizontalStackLayout>
+
+                    <ImageButton x:Name="SelectedItem"
+                                 WidthRequest="34"
+                                 HeightRequest="34"
+                                 Clicked="ImageButton_Clicked" />
+
+                    <ImageButton x:Name="Arrow"
+                                 Source="drop_down.png"
+                                 Clicked="ImageButton_Clicked"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center" />
+
+                    <Line   BackgroundColor="#189AB4"
+                            Margin="0,5" />
+
+                </HorizontalStackLayout>
+
+
+                <Entry x:Name="SearchText"
+                       Placeholder="جستجوی کلمه"
+                       PlaceholderColor="Gray"
+                       FontSize="Medium"
+                       TextChanged="Entry_TextChanged" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!--advance search section-->
+        <Grid HeightRequest="40"
+                WidthRequest="200"
+                Margin="0,65"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+             >
+        
+
+            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+
+                <Border Stroke="LightGray"
+                        StrokeThickness="2"
+                        BackgroundColor="White"
+                        VerticalOptions="Start"
+                        HeightRequest="40"
+                        Margin="0,0,-40,0"
+                        StrokeShape="RoundRectangle 50">
+                    <Label  Text="شامل..."
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            TextColor="Gray"
+                            Margin="20,0,40,0" />
+                </Border>
+                
+                <Border 
+                        Stroke="LightGray"
+                        StrokeThickness="2"
+                        BackgroundColor="Gray"
+                        VerticalOptions="Start"
+                        HeightRequest="40"
+                        Margin="0,0,0,0"
+                        StrokeShape="RoundRectangle 50">
+                    <Label Text="شروع با..."
+                           FontSize="Small"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           Margin="15,0"/>
+                </Border>
+
+     
+            </HorizontalStackLayout>
+        </Grid>
+
     </Grid>
+
+
 
 
 </ContentPage>

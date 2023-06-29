@@ -88,7 +88,7 @@ public partial class MainPage : ContentPage
     private async void ThirdItem_Tapped(object sender, TappedEventArgs e)
     {
         imageSource = "iran2.png";
-        selctedLang = "Persian";
+        selctedLang = "Farsi";
         await CloseDropDown();
 
     }
