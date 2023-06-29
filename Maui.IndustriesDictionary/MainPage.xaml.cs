@@ -12,6 +12,7 @@ public partial class MainPage : ContentPage
 {
 
     string selctedLang = "English";
+    string advanceSearch = "Start";
     string _imageSource;
     ObservableCollection<WordsModel> words = new ObservableCollection<WordsModel>();
     string imageSource
@@ -135,6 +136,29 @@ public partial class MainPage : ContentPage
 
         words =  repository.GetList(search, selctedLang).ToObservableCollection();
         Utils.SetDataToCollectionView(CollectionMainWords, "", words,this);
+    }
+
+    private void Start_Tapped(object sender, TappedEventArgs e)
+    {
+        start_with_lay.BackgroundColor = Colors.Gray;
+        start_label.TextColor = Colors.White;        
+
+        contain_lay.BackgroundColor = Colors.White;
+        contains_label.TextColor = Colors.Gray;
+
+        advanceSearch = "Start";
+    }    
+    
+    private void Contains_Tapped(object sender, TappedEventArgs e)
+    {
+        start_with_lay.BackgroundColor = Colors.White;
+        start_label.TextColor = Colors.Gray;
+
+        contain_lay.BackgroundColor = Colors.Gray;
+        contains_label.TextColor = Colors.White;
+
+        advanceSearch = "Contains";
+
     }
 }
 

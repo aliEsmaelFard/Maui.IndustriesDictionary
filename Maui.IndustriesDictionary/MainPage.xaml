@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.IndustriesDictionary.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#1F91C2"
+             BackgroundColor="#5CCDFD"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
 
     <!--necessary Code  for any page and Dont forget  xmlns:mct  line in top of page-->
@@ -13,8 +13,6 @@
     </ContentPage.Behaviors>
 
     <Grid RowDefinitions="*">
-
-
 
         <Grid>
 
@@ -175,10 +173,12 @@
         </Grid>
 
         <!--toolbar-->
-        <Border HeightRequest="50"
+        <Border HeightRequest="55"
                 BackgroundColor="White"
                 Margin="20,10,20,0"
                 VerticalOptions="Start"
+                Stroke="#00A3FF"
+                StrokeThickness="2"
                 StrokeShape="RoundRectangle 8">
             <Border.Shadow>
                 <Shadow Brush="#000000"
@@ -214,6 +214,7 @@
 
                 <Entry x:Name="SearchText"
                        Placeholder="جستجوی کلمه"
+                       VerticalOptions="Center"
                        PlaceholderColor="Gray"
                        FontSize="Medium"
                        TextChanged="Entry_TextChanged" />
@@ -233,13 +234,19 @@
 
 
                 <Border Stroke="LightGray"
+                        x:Name="contain_lay"
                         StrokeThickness="2"
                         BackgroundColor="White"
                         VerticalOptions="Start"
                         HeightRequest="40"
                         Margin="0,0,-40,0"
                         StrokeShape="RoundRectangle 50">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Contains_Tapped" />
+                    </Border.GestureRecognizers>
+                        
                     <Label  Text="شامل..."
+                            x:Name="contains_label"
                             FontSize="Small"
                             FontAttributes="Bold"
                             VerticalOptions="Center"
@@ -248,7 +255,7 @@
                             Margin="20,0,40,0" />
                 </Border>
                 
-                <Border 
+                <Border x:Name="start_with_lay"
                         Stroke="LightGray"
                         StrokeThickness="2"
                         BackgroundColor="Gray"
@@ -256,9 +263,14 @@
                         HeightRequest="40"
                         Margin="0,0,0,0"
                         StrokeShape="RoundRectangle 50">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Start_Tapped" />
+                    </Border.GestureRecognizers>
+                    
                     <Label Text="شروع با..."
                            FontSize="Small"
                            FontAttributes="Bold"
+                           x:Name="start_label"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            TextColor="White"

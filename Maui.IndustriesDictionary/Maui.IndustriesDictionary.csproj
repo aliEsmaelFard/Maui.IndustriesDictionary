@@ -62,6 +62,7 @@
 	  <None Remove="Resources\Images\iran.svg" />
 	  <None Remove="Resources\Images\iran2.png" />
 	  <None Remove="Resources\Images\iran_card.png" />
+	  <None Remove="Resources\Images\search.png" />
 	  <None Remove="Resources\Images\united_card.png" />
 	</ItemGroup>
 

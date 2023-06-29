@@ -16,11 +16,16 @@ namespace Maui.Dictionary.Repository
             _database.CreateTable<WordsModel>();
         }
 
-        public  List<WordsModel> GetList(string word, string lang)
-     {
-            string query = $"Select *  FROM word  Where {lang} Like '{word}%'  Limit 20";
-          //  string query2 = $"Select *  FROM word";
-            List<WordsModel> x =   _database.Query<WordsModel>(query);
+        public List<WordsModel> GetList(string word, string lang, string advanceSearch)
+        {
+            string query;
+            if(advanceSearch == "Start")
+                 query = $"Select *  FROM word  Where {lang} Like '{word}%'  Limit 20";
+            else
+                query = $"Select *  FROM word  Where {lang} Like '%{word}%'  Limit 20";
+
+            //  string query2 = $"Select *  FROM word";
+            List<WordsModel> x = _database.Query<WordsModel>(query);
             return x;
         }
 
