@@ -76,6 +76,8 @@ public partial class MainPage : ContentPage
         imageSource = "english.svg";
         selctedLang = "English";
         await CloseDropDown();
+        //search
+        CheckEntery();
     }
 
     private async void SecondItem_Tapped(object sender, TappedEventArgs e)
@@ -83,6 +85,8 @@ public partial class MainPage : ContentPage
         imageSource = "germany.svg";
         selctedLang = "Deutsch";
         await CloseDropDown();
+        //search
+        CheckEntery();
 
     }
 
@@ -91,6 +95,8 @@ public partial class MainPage : ContentPage
         imageSource = "iran2.png";
         selctedLang = "Farsi";
         await CloseDropDown();
+        //search
+        CheckEntery();
 
     }
 
@@ -119,10 +125,13 @@ public partial class MainPage : ContentPage
         CheckEntery();
     }
 
-    private void CheckEntery()
+    private async void CheckEntery()
     {
         try
         {
+            LoadingBar.IsVisible = true;
+            CollectionMainWords.EmptyView = "";
+            await Task.Delay(300);
             string search = SearchText.Text;
             search_img.IsVisible = (String.IsNullOrEmpty(search)) ? true : false;
 
@@ -136,6 +145,8 @@ public partial class MainPage : ContentPage
                 words = null;
                 BindingContext = words;
             }
+            LoadingBar.IsVisible = false;
+
         }
         catch (Exception)
         {
@@ -153,7 +164,7 @@ public partial class MainPage : ContentPage
 
     private void Start_Tapped(object sender, TappedEventArgs e)
     {
-        start_with_lay.BackgroundColor = Colors.Gray;
+        start_with_lay.BackgroundColor = Colors.SteelBlue;
         start_label.TextColor = Colors.White;        
 
         contain_lay.BackgroundColor = Colors.White;
@@ -170,7 +181,7 @@ public partial class MainPage : ContentPage
         start_with_lay.BackgroundColor = Colors.White;
         start_label.TextColor = Colors.Gray;
 
-        contain_lay.BackgroundColor = Colors.Gray;
+        contain_lay.BackgroundColor = Colors.SteelBlue;
         contains_label.TextColor = Colors.White;
 
         advanceSearch = "Contains";

@@ -4,6 +4,7 @@
              x:Class="Maui.IndustriesDictionary.MainPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="#5CCDFD"
+               xmlns:iconPacks="using:MahApps.Metro.IconPacks"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
 
     <!--necessary Code  for any page and Dont forget  xmlns:mct  line in top of page-->
@@ -16,17 +17,7 @@
 
         <Grid>
 
-            <ActivityIndicator Grid.Column="0"
-                               Grid.ColumnSpan="3"
-                               Grid.Row="0"
-                               Grid.RowSpan="3"
-                               Color="#189AB4"
-                               WidthRequest="50"
-                               HeightRequest="50"
-                               x:Name="LoadingBar"
-                               IsRunning="True"
-                               IsVisible="false" />
-
+      
 
             <ScrollView Grid.Row="0"
                         Grid.Column="0"
@@ -40,7 +31,7 @@
 
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
-                                           ItemSpacing="16" />
+                                           ItemSpacing="8" />
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
@@ -117,9 +108,22 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
+                
+                
             </ScrollView>
 
-       
+            <ActivityIndicator 
+                Grid.Column="0"
+                               Grid.ColumnSpan="3"
+                               Grid.Row="0"
+                               Grid.RowSpan="3"
+                               Color="SteelBlue"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               x:Name="LoadingBar"
+                               IsRunning="True"
+                               IsVisible="false" />
+
 
 
         </Grid>
@@ -158,6 +162,7 @@
                                  HeightRequest="16"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center" />
+                    
 
                     <Line   BackgroundColor="#189AB4"
                             Margin="0,5" />
@@ -193,7 +198,7 @@
              >
         
 
-            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="-10">
 
 
                 <Border Stroke="LightGray"
@@ -202,8 +207,7 @@
                         BackgroundColor="White"
                         VerticalOptions="Start"
                         HeightRequest="40"
-                        Margin="0,0,-40,0"
-                        StrokeShape="RoundRectangle 50">
+                        StrokeShape="RoundRectangle 50 0 50 0">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Contains_Tapped" />
                     </Border.GestureRecognizers>
@@ -215,17 +219,17 @@
                             VerticalOptions="Center"
                             HorizontalOptions="Center"
                             TextColor="Gray"
-                            Margin="20,0,40,0" />
+                            Margin="30,0,18,0" />
                 </Border>
                 
                 <Border x:Name="start_with_lay"
                         Stroke="LightGray"
                         StrokeThickness="2"
-                        BackgroundColor="Gray"
+                        BackgroundColor="SteelBlue"
                         VerticalOptions="Start"
                         HeightRequest="40"
                         Margin="0,0,0,0"
-                        StrokeShape="RoundRectangle 50">
+                        StrokeShape="RoundRectangle 0 50 0 50">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Start_Tapped" />
                     </Border.GestureRecognizers>
@@ -237,7 +241,7 @@
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            TextColor="White"
-                           Margin="15,0"/>
+                           Margin="20,0"/>
                 </Border>
 
      
