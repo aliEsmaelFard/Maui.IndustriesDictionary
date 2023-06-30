@@ -2,9 +2,13 @@
 using Maui.Dictionary.Model;
 using Maui.Dictionary.Repository;
 using Maui.IndustriesDictionary.Util;
-using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Maui.IndustriesDictionary;
 
@@ -52,13 +56,13 @@ public partial class MainPage : ContentPage
     {
         if (DropDown.IsVisible)
         {
-            //await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);
+            await Arrow.RotateTo(Arrow.Rotation + 180, 200, Easing.Linear);
             await CloseDropDown();
         }
         else
         {
             DropDown.IsVisible = true;
-            //     await Arrow.RotateTo(Arrow.Rotation + 180, 100, Easing.Linear);  
+             await Arrow.RotateTo(Arrow.Rotation + 180, 200, Easing.Linear);  
             await DropDown.TranslateTo(0, 10, 200, Easing.Linear);
         }
 
@@ -134,7 +138,7 @@ public partial class MainPage : ContentPage
             await Task.Delay(300);
             string search = SearchText.Text;
             search_img.IsVisible = (String.IsNullOrEmpty(search)) ? true : false;
-
+            poster.IsVisible = false;
             if (!String.IsNullOrEmpty(search) && search.Length > 2)
             {
                 //Connet to db
@@ -164,7 +168,7 @@ public partial class MainPage : ContentPage
 
     private void Start_Tapped(object sender, TappedEventArgs e)
     {
-        start_with_lay.BackgroundColor = Colors.SteelBlue;
+        start_with_lay.BackgroundColor = Colors.RoyalBlue;
         start_label.TextColor = Colors.White;        
 
         contain_lay.BackgroundColor = Colors.White;
@@ -181,13 +185,19 @@ public partial class MainPage : ContentPage
         start_with_lay.BackgroundColor = Colors.White;
         start_label.TextColor = Colors.Gray;
 
-        contain_lay.BackgroundColor = Colors.SteelBlue;
+        contain_lay.BackgroundColor = Colors.RoyalBlue;
         contains_label.TextColor = Colors.White;
 
         advanceSearch = "Contains";
 
         //search
         CheckEntery();
+    }
+
+    private void toobar_Tapped(object sender, TappedEventArgs e)
+    {
+        toolbar.Stroke = Colors.DeepSkyBlue;
+
     }
 }
 

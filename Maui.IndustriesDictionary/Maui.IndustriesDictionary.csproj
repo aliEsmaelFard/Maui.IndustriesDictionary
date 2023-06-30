@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Maui.IndustriesDictionary</ApplicationTitle>
+		<ApplicationTitle>واژه نامه پیشرفته</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.maui.industriesdictionary</ApplicationId>
@@ -36,10 +36,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.png" Color="#FFFFFF" BaseSize="64,64" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -53,6 +53,8 @@
 
 	<ItemGroup>
 	  <None Remove="data.sqlite" />
+	  <None Remove="Resources\Fonts\irsans.ttf" />
+	  <None Remove="Resources\Fonts\sun.ttf" />
 	  <None Remove="Resources\Images\arrow.png" />
 	  <None Remove="Resources\Images\English.svg" />
 	  <None Remove="Resources\Images\germany.svg" />
@@ -60,8 +62,11 @@
 	  <None Remove="Resources\Images\iran.svg" />
 	  <None Remove="Resources\Images\iran2.png" />
 	  <None Remove="Resources\Images\iran_card.png" />
+	  <None Remove="Resources\Images\pos.png" />
+	  <None Remove="Resources\Images\poster5.png" />
 	  <None Remove="Resources\Images\search.png" />
 	  <None Remove="Resources\Images\united_card.png" />
+	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,5 +78,17 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
 	</ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>C:\Users\rapha\source\repos\Zarkia.MAUI.Section\toDoKey.jks</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>rapha</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>rapha99</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>rapha99</AndroidSigningStorePass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
 
 </Project>
